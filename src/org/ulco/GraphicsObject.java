@@ -13,6 +13,10 @@ abstract public class GraphicsObject {
 
     abstract boolean isClosed(Point pt, double distance);
 
+    abstract protected boolean isObject();
+
+    protected int size(){return 1; }
+
     abstract void move(Point delta);
 
     abstract public String toJson();

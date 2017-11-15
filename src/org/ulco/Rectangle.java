@@ -19,6 +19,10 @@ public class Rectangle extends GraphicsObject {
         m_width = Double.parseDouble(str.substring(widthIndex + 6, endIndex));
     }
 
+    protected boolean isObject(){
+        return true;
+    }
+
     public GraphicsObject copy() {
         return new Rectangle(m_origin.copy(), m_height, m_width);
     }

@@ -6,6 +6,10 @@ public class Circle extends GraphicsObject {
         this.m_radius = radius;
     }
 
+    protected boolean isObject(){
+        return true;
+    }
+
     public Circle(String json) {
         String str = json.replaceAll("\\s+", "");
         int centerIndex = str.indexOf("center");

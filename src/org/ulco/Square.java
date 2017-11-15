@@ -16,6 +16,10 @@ public class Square extends GraphicsObject {
         m_length = Double.parseDouble(str.substring(lengthIndex + 7, endIndex));
     }
 
+    protected boolean isObject(){
+        return true;
+    }
+
     public GraphicsObject copy() {
         return new Square(m_origin.copy(), m_length);
     }
