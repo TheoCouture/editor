@@ -47,10 +47,7 @@ public class DocumentTest extends TestCase {
         l1.add(c1);
         l2.add(r);
         l2.add(c2);
-        assertEquals(document.toJson(), "{ type: document, layers: { { type: layer, objects : { { type: square, center: " +
-                "{ type: point, x: 0.0, y: 0.0 }, length: 5.0 }, { type: circle, center: { type: point, x: 5.0, y: 5.0 }" +
-                ", radius: 4.0 } } }, { type: layer, objects : { { type: rectangle, center: { type: point, x: -5.0, y: 1.0 }" +
-                ", height: 4.0, width: 2.0 }, { type: circle, center: { type: point, x: -4.0, y: 8.0 }, radius: 1.0 } } } } }");
+        assertEquals(document.toJson(), "{ type: document, layers: { { type: layer, objects : { { type: square, center: { type: point, x: 0.0, y: 0.0 }, length: 5.0 }, { type: circle, center: { type: point, x: 5.0, y: 5.0 }, radius: 4.0 } }, groups : {  } }, { type: layer, objects : { { type: rectangle, center: { type: point, x: -5.0, y: 1.0 }, height: 4.0, width: 2.0 }, { type: circle, center: { type: point, x: -4.0, y: 8.0 }, radius: 1.0 } }, groups : {  } } } }");
     }
 
     @Test
@@ -67,10 +64,25 @@ public class DocumentTest extends TestCase {
         l1.add(c1);
         l2.add(r);
         l2.add(c2);
-        assertEquals(document.toJson(), "{ type: document, layers: { { type: layer, objects : { { type: square, center: " +
-                "{ type: point, x: 0.0, y: 0.0 }, length: 5.0 }, { type: circle, center: { type: point, x: 5.0, y: 5.0 }" +
-                ", radius: 4.0 } } }, { type: layer, objects : { { type: rectangle, center: { type: point, x: -5.0, y: 1.0 }" +
-                ", height: 4.0, width: 2.0 }, { type: circle, center: { type: point, x: -4.0, y: 8.0 }, radius: 1.0 } } } } }");
+        assertEquals(document.toJson(), "{ type: document, layers: { { type: layer, objects : { { type: square, center: { type: point, x: 0.0, y: 0.0 }, length: 5.0 }, { type: circle, center: { type: point, x: 5.0, y: 5.0 }, radius: 4.0 } }, groups : {  } }, { type: layer, objects : { { type: rectangle, center: { type: point, x: -5.0, y: 1.0 }, height: 4.0, width: 2.0 }, { type: circle, center: { type: point, x: -4.0, y: 8.0 }, radius: 1.0 } }, groups : {  } } } }");
+    }
+
+    public void testSize() throws Exception {
+
+        Document document = new Document();
+        Layer l = document.createLayer();
+        Group g = new Group();
+        Square s = new Square(new Point(0,0), 5);
+        Circle c = new Circle(new Point(5,5), 4);
+        Group g2 = new Group();
+        Rectangle r = new Rectangle(new Point(-6,10), 5.2, 9);
+
+        g.add(s);
+        g.add(c);
+        g2.add(g);
+        g2.add(r);
+        l.add(g2);
+        assertEquals(l.size(), 3);
     }
 
     @Test
