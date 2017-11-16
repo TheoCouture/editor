@@ -59,6 +59,10 @@ public class Document {
         return size;
     }
 
+    public Vector<Layer> getM_layers() {
+        return m_layers;
+    }
+
     private void parseLayers(String layersStr) {
         while (!layersStr.isEmpty()) {
             int separatorIndex = searchSeparator(layersStr);
@@ -103,14 +107,14 @@ public class Document {
         }
     }
 
-    public GraphicsObjects select(Point pt, double distance) {
+   /* public GraphicsObjects select(Point pt, double distance) {
         GraphicsObjects list = new GraphicsObjects();
 
         for (Layer layer : m_layers) {
             list.addAll(layer.select(pt, distance));
         }
         return list;
-    }
+    }*/
 
     public String toJson() {
         String str = "{ type: document, layers: { ";

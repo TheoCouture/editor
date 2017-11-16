@@ -5,7 +5,7 @@ import java.util.Vector;
 public class Layer {
     public Layer() {
         m_list = new Vector<GraphicsObject>();
-        m_ID = ++ID.ID;
+        m_ID = ID.getInstance().GetNumber();
     }
 
     public Layer(String json) {
@@ -77,7 +77,7 @@ public class Layer {
         }
     }
 
-    public GraphicsObjects select(Point pt, double distance) {
+    /*public GraphicsObjects select(Point pt, double distance) {
         GraphicsObjects list = new GraphicsObjects();
 
         for (GraphicsObject object : m_list) {
@@ -86,6 +86,10 @@ public class Layer {
             }
         }
         return list;
+    }*/
+
+    public Vector<GraphicsObject> getM_list() {
+        return m_list;
     }
 
     public String toJson() {

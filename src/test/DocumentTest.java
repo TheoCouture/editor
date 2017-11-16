@@ -10,25 +10,27 @@ public class DocumentTest extends TestCase {
     public void testSelect() throws Exception {
         Document document = new Document();
         Layer layer = document.createLayer();
+        DataManagement dataManagement = new DataManagement();
         Circle c = new Circle(new Point(2, 8), 10);
 
         layer.add(c);
 
-        assertTrue(document.select(new Point(1,1), 8).size() == 1);
-        assertTrue(document.select(new Point(1,1), 8).firstElement().getID() == c.getID());
+        assertTrue(dataManagement.select(new Point(1,1), 8, document).size() == 1);
+        assertTrue(dataManagement.select(new Point(1,1), 8, document).firstElement().getID() == c.getID());
     }
 
     @Test
     public void testSelect2() throws Exception {
         Document document = new Document();
         Layer layer = document.createLayer();
+        DataManagement dataManagement = new DataManagement();
         Circle c = new Circle(new Point(2, 8), 10);
         Square s = new Square(new Point(-2, -3), 3);
 
         layer.add(c);
         layer.add(s);
 
-        assertTrue(document.select(new Point(1,1), 8).size() == 2);
+        assertTrue(dataManagement.select(new Point(1,1), 8, document).size() == 2);
     }
 
     @Test
