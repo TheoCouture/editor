@@ -94,32 +94,6 @@ abstract public class Contener extends GraphicsObject {
         return size;
     }
 
-    public String toJson() {
-        String str = "{ type: "+this.getClass().getSimpleName().toLowerCase()+", objects : { ";
-
-        for (int i = 0; i < m_list.size(); ++i) {
-            GraphicsObject element = m_list.elementAt(i);
-
-            if (element.isObject()) {
-                str += element.toJson();
-                if (i < m_list.size() - 1) {
-                    str += ", ";
-                }
-            }
-        }
-        str += " }, groups : { ";
-
-        for (int i = 0; i < m_list.size(); ++i) {
-
-
-            GraphicsObject element = m_list.elementAt(i);
-
-            if (!element.isObject())
-                str += element.toJson();
-        }
-
-        return str + " } }";
-    }
 
     public Vector<Vector<GraphicsObject>> getList (){
         Vector<Vector<GraphicsObject>> list = new Vector<>();

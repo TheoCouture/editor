@@ -21,10 +21,6 @@ public class Square extends Rectangle {
         return  m_length;
     }
 
-    public String toJson() {
-        return "{ type: square, center: " + m_center.toJson() + ", length: " + this.m_height + " }";
-    }
-
     public String toString() {
         return "square[" + m_center.toString() + "," + m_height + "]";
     }

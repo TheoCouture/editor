@@ -17,11 +17,6 @@ public class Circle extends Shape {
 
     public Point getCenter() { return m_center; }
 
-
-    public String toJson() {
-        return "{ type: circle, center: " + m_center.toJson() + ", radius: " + this.m_radius + " }";
-    }
-
     public double getRadius(){
         return m_radius;
     }

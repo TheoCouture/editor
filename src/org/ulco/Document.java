@@ -40,19 +40,5 @@ public class Document {
     }
 
 
-    public String toJson() {
-        String str = "{ type: document, layers: { ";
-
-        for (int i = 0; i < m_layers.size(); ++i) {
-            GraphicsObject element = m_layers.elementAt(i);
-
-            str += element.toJson();
-            if (i < m_layers.size() - 1) {
-                str += ", ";
-            }
-        }
-        return str + " } }";
-    }
-
     private Vector<GraphicsObject> m_layers;
 }

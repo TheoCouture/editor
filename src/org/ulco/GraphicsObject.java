@@ -19,8 +19,6 @@ abstract public class GraphicsObject {
 
     abstract void move(Point delta);
 
-    abstract public String toJson();
-
     abstract public String toString();
 
     protected int m_ID;

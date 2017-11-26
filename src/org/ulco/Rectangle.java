@@ -34,10 +34,6 @@ public class Rectangle extends Shape {
         return m_width;
     }
 
-    public String toJson() {
-        return "{ type: rectangle, center: " + m_center.toJson() + ", height: " + this.m_height + ", width: " + this.m_width + " }";
-    }
-
     public String toString() {
         return "rectangle[" + m_center.toString() + "," + m_height + "," + m_width + "]";
     }

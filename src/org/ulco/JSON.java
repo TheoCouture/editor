@@ -127,14 +127,6 @@ public class JSON {
         return str;
     }
 
-    /*static public Group parseGroup(String json) {
-        return new Group(json);
-    }*/
-
-    /*static public Layer parseLayer(String json) {
-        return new Layer(json);
-    }*/
-
     static public Document parseDocument(String json) {
         return new Document(json);
     }
