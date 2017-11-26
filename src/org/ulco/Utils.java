@@ -105,6 +105,16 @@ public class Utils {
         return  Double.parseDouble(str.substring( heightIndex + 7 , heightIndexEnd ));
     }
 
+    static public double parseBase(String json){
+
+        String str = setJson(json);
+        int baseIndex = str.indexOf("base");
+        int endIndex = str.lastIndexOf("}");
+
+
+        return Double.parseDouble(str.substring( baseIndex + 5, endIndex));
+    }
+
     static public double parseWidth(String json){
 
         String str = setJson(json);

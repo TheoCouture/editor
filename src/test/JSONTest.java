@@ -31,6 +31,15 @@ public class JSONTest extends TestCase {
     }
 
     @Test
+    public void testParseTriangle() throws Exception {
+        String json = "{ type: triangle, center: { type: point, x: 0.0, y: 0.0 }, height: 10.0, base: 30.0 }";
+
+        assertTrue(JSON.parse(json) instanceof Triangle);
+        assertEquals(JSON.parse(json).toString(), "triangle[point[0.0,0.0],10.0,30.0]");
+    }
+
+
+    @Test
     public void testParseGroup() throws Exception {
         String json = "{ type: group, objects : { { type: square, center: { type: point, x: 0.0, y: 0.0 }, length: 5.0 }, " +
                 "{ type: circle, center: { type: point, x: 5.0, y: 5.0 }, radius: 4.0 } }, groups : {  } }";

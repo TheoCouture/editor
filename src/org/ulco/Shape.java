@@ -23,4 +23,24 @@ abstract public class Shape extends GraphicsObject{
     protected void move(Point delta) { m_center.move(delta); }
 
     protected final Point m_center;
+
+    public void setBordercolor(Colors.Color  color){
+        Bordercolor= color;
+    }
+
+    public void setColor(Colors.Color color){
+        Color= color;
+    }
+
+    public Colors.Color  getBordercolor(){
+        return Bordercolor;
+    }
+
+    public Colors.Color  getColor(){
+        return Color;
+    }
+
+    protected Colors.Color  Bordercolor;
+
+    protected Colors.Color Color;
 }
