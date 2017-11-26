@@ -6,10 +6,10 @@ public class DataManagement {
 
     public GraphicsObjects select(Point pt, double distance, Document document) {
         GraphicsObjects list = new GraphicsObjects();
-        Vector<Layer> LayerList = document.getM_layers();
+        Vector<GraphicsObject> LayerList = document.getM_layers();
 
-        for (Layer layer : LayerList) {
-            list.addAll(select(pt, distance, layer));
+        for ( GraphicsObject o: LayerList) {
+            list.addAll(select(pt, distance, (Layer) o));
         }
         return list;
     }

@@ -5,16 +5,17 @@ import java.util.Vector;
 
 public class Document {
     public Document() {
-        m_layers = new Vector<Layer>();
+        m_layers = new Vector<>();
     }
 
     public Document(String json) {
-        m_layers = new Vector<Layer>();
+        m_layers = new Vector<>();
         String str = json.replaceAll("\\s+", "");
         int layersIndex = str.indexOf("layers");
         int endIndex = str.lastIndexOf("}");
 
-        parseLayers(str.substring(layersIndex + 8, endIndex));
+        m_layers.addAll(0,Utils.parse(str.substring(layersIndex + 8, endIndex)));
+
     }
 
 
@@ -33,73 +34,21 @@ public class Document {
         int size = 0;
 
         for (int i = 0; i < m_layers.size(); ++i) {
-            size += m_layers.elementAt(i).getObjectNumber();
+            size += m_layers.elementAt(i).size();
         }
         return size;
     }
 
-    public Vector<Layer> getM_layers() {
+    public Vector<GraphicsObject> getM_layers() {
         return m_layers;
     }
 
-    private void parseLayers(String layersStr) {
-        while (!layersStr.isEmpty()) {
-            int separatorIndex = searchSeparator(layersStr);
-            String layerStr;
-
-            if (separatorIndex == -1) {
-                layerStr = layersStr;
-            } else {
-                layerStr = layersStr.substring(0, separatorIndex);
-            }
-            m_layers.add(JSON.parseLayer(layerStr));
-            if (separatorIndex == -1) {
-                layersStr = "";
-            } else {
-                layersStr = layersStr.substring(separatorIndex + 1);
-            }
-        }
-    }
-
-    private int searchSeparator(String str) {
-        int index = 0;
-        int level = 0;
-        boolean found = false;
-
-        while (!found && index < str.length()) {
-            if (str.charAt(index) == '{') {
-                ++level;
-                ++index;
-            } else if (str.charAt(index) == '}') {
-                --level;
-                ++index;
-            } else if (str.charAt(index) == ',' && level == 0) {
-                found = true;
-            } else {
-                ++index;
-            }
-        }
-        if (found) {
-            return index;
-        } else {
-            return -1;
-        }
-    }
-
-   /* public GraphicsObjects select(Point pt, double distance) {
-        GraphicsObjects list = new GraphicsObjects();
-
-        for (Layer layer : m_layers) {
-            list.addAll(layer.select(pt, distance));
-        }
-        return list;
-    }*/
 
     public String toJson() {
         String str = "{ type: document, layers: { ";
 
         for (int i = 0; i < m_layers.size(); ++i) {
-            Layer element = m_layers.elementAt(i);
+            GraphicsObject element = m_layers.elementAt(i);
 
             str += element.toJson();
             if (i < m_layers.size() - 1) {
@@ -109,5 +58,5 @@ public class Document {
         return str + " } }";
     }
 
-    private Vector<Layer> m_layers;
+    private Vector<GraphicsObject> m_layers;
 }

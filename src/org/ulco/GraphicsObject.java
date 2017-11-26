@@ -3,6 +3,7 @@ package org.ulco;
 abstract public class GraphicsObject {
     public GraphicsObject() {
         m_ID = ID.getInstance().GetNumber();
+        utils = new Utils();
     }
 
     abstract public GraphicsObject copy();
@@ -23,5 +24,7 @@ abstract public class GraphicsObject {
 
     abstract public String toString();
 
-    private int m_ID;
+    protected int m_ID;
+
+    protected Utils utils;
 }
