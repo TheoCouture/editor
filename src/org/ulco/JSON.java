@@ -127,15 +127,32 @@ public class JSON {
         return str;
     }
 
-    static public Group parseGroup(String json) {
+    /*static public Group parseGroup(String json) {
         return new Group(json);
-    }
+    }*/
 
-    static public Layer parseLayer(String json) {
+    /*static public Layer parseLayer(String json) {
         return new Layer(json);
-    }
+    }*/
 
     static public Document parseDocument(String json) {
         return new Document(json);
+    }
+
+    static public String DocumentToJson(Document doc) {
+        String str = "{ type: document, layers: { ";
+
+        Vector<GraphicsObject> layers = doc.getM_layers();
+
+        for (int i=0; i< layers.size(); i++){
+            str += JSON.GraphicToJSON(layers.get(i));
+            if (i < layers.size()-1)
+                str += ", ";
+        }
+
+        str += " } }";
+
+        return str;
+
     }
 }

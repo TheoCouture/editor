@@ -121,6 +121,22 @@ abstract public class Contener extends GraphicsObject {
         return str + " } }";
     }
 
+    public Vector<Vector<GraphicsObject>> getList (){
+        Vector<Vector<GraphicsObject>> list = new Vector<>();
+        Vector<GraphicsObject> objects = new Vector<>();
+        Vector<GraphicsObject> contener = new Vector<>();
+        for( GraphicsObject o : m_list){
+            if (o.isObject())
+                objects.add(o);
+            else
+                contener.add(o);
+        }
+
+        list.add(objects);
+        list.add(contener);
+        return list;
+    }
+
     public String toString() {
 
 

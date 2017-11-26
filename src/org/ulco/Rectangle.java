@@ -23,16 +23,23 @@ public class Rectangle extends Shape {
     }
 
     public GraphicsObject copy() {
-        return new Rectangle(m_origin.copy(), m_height, m_width);
+        return new Rectangle(m_center.copy(), m_height, m_width);
     }
 
+    public double getHeight() {
+        return m_height;
+    }
+
+    public double getWidth() {
+        return m_width;
+    }
 
     public String toJson() {
-        return "{ type: rectangle, center: " + m_origin.toJson() + ", height: " + this.m_height + ", width: " + this.m_width + " }";
+        return "{ type: rectangle, center: " + m_center.toJson() + ", height: " + this.m_height + ", width: " + this.m_width + " }";
     }
 
     public String toString() {
-        return "rectangle[" + m_origin.toString() + "," + m_height + "," + m_width + "]";
+        return "rectangle[" + m_center.toString() + "," + m_height + "," + m_width + "]";
     }
 
     protected final double m_height;

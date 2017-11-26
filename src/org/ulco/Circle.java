@@ -12,18 +12,22 @@ public class Circle extends Shape {
     }
 
     public GraphicsObject copy() {
-        return new Circle(m_origin.copy(), m_radius);
+        return new Circle(m_center.copy(), m_radius);
     }
 
-    public Point getCenter() { return m_origin; }
+    public Point getCenter() { return m_center; }
 
 
     public String toJson() {
-        return "{ type: circle, center: " + m_origin.toJson() + ", radius: " + this.m_radius + " }";
+        return "{ type: circle, center: " + m_center.toJson() + ", radius: " + this.m_radius + " }";
+    }
+
+    public double getRadius(){
+        return m_radius;
     }
 
     public String toString() {
-        return "circle[" + m_origin.toString() + "," + m_radius + "]";
+        return "circle[" + m_center.toString() + "," + m_radius + "]";
     }
 
     private final double m_radius;
