@@ -7,11 +7,7 @@ abstract public class Shape extends GraphicsObject{
     }
 
     public Shape(String json) {
-        String str = json.replaceAll("\\s+","");
-        int centerIndex = str.indexOf("center");
-        int radiusIndexEnd = str.indexOf("},");
-
-        m_origin = new Point(str.substring(centerIndex + 7, radiusIndexEnd + 1));
+        m_origin = Utils.parseCenter(json);
     }
 
     public boolean isClosed(Point pt, double distance) {

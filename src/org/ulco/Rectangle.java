@@ -9,21 +9,14 @@ public class Rectangle extends Shape {
 
     public Rectangle(String json) {
         super(json);
-        String str = json.replaceAll("\\s+","");
-        int centerIndex = str.indexOf("center");
-        int heightIndex = str.indexOf("height");
-        int widthIndex = str.indexOf("width");
-        int endIndex = str.lastIndexOf("}");
 
 
         if (this.getClass().getSimpleName().contains("Square")){
-            heightIndex = str.indexOf("length");
-            m_height = Double.parseDouble(str.substring(heightIndex + 7, endIndex));
+            m_height = Utils.parseLength(json);
             m_width = m_height;
         }else {
-            m_height = Double.parseDouble(str.substring(heightIndex + 7, widthIndex - 1));
-            m_width = Double.parseDouble(str.substring(widthIndex + 6, endIndex));
-
+            m_height = Utils.parseHeight(json);
+            m_width = Utils.parseWidth(json);
         }
 
 

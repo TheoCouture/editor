@@ -8,11 +8,7 @@ public class Circle extends Shape {
 
     public Circle(String json) {
         super(json);
-        String str = json.replaceAll("\\s+", "");
-        int radiusIndex = str.indexOf("radius");
-        int endIndex = str.lastIndexOf("}");
-
-        m_radius = Double.parseDouble(str.substring(radiusIndex + 7, endIndex));
+        m_radius = Utils.parseRadius(json);
     }
 
     public GraphicsObject copy() {

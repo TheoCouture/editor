@@ -10,11 +10,7 @@ public class Document {
 
     public Document(String json) {
         m_layers = new Vector<>();
-        String str = json.replaceAll("\\s+", "");
-        int layersIndex = str.indexOf("layers");
-        int endIndex = str.lastIndexOf("}");
-
-        m_layers.addAll(0,Utils.parse(str.substring(layersIndex + 8, endIndex)));
+        m_layers.addAll(0,Utils.parseLayers(json));
 
     }
 

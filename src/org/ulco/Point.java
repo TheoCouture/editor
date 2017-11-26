@@ -7,14 +7,8 @@ public class Point {
     }
 
     public Point(String json) {
-        String str = json.replaceAll("\\s+","");
-        int xIndex = str.indexOf("x");
-        int separatorIndex = str.indexOf(",", xIndex + 2);
-        int yIndex = str.lastIndexOf("y");
-        int endIndex = str.lastIndexOf("}");
-
-        m_x = Double.parseDouble(str.substring(xIndex + 2, separatorIndex));
-        m_y = Double.parseDouble(str.substring(yIndex + 2, endIndex));
+        m_x = Utils.parsePointX(json);
+        m_y = Utils.parsePointY(json);
     }
 
     public Point copy() {

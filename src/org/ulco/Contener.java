@@ -13,16 +13,7 @@ abstract public class Contener extends GraphicsObject {
     }
 
     public Contener(String json) {
-        m_list= new Vector<GraphicsObject>();
-        String str = json.replaceAll("\\s+","");
-        int objectsIndex = str.indexOf("objects");
-        int groupsIndex = str.indexOf("groups");
-        int endIndex = str.lastIndexOf("}");
-
-        m_list.addAll(0,Utils.parse(str.substring(objectsIndex + 9, groupsIndex - 2)));
-        m_list.addAll(0,Utils.parse(str.substring(groupsIndex + 8, endIndex - 1)));
-
-
+        m_list = Utils.parseContener(json);
     }
 
     public void move(Point delta) {
